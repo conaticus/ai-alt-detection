@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is the source code for a Discord Bot that can detect all accounts using [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing). The bot will automatically train on chat messages and flag suspected users based on the settings provided.
+This is the source code for a Discord Bot that can detect alt accounts using [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing). The bot will automatically train on chat messages and flag suspected users based on the settings provided.
 
 ## Warning
 
