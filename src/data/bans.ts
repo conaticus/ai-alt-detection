@@ -53,7 +53,16 @@ export async function addNormalBan(user: string) {
     await writeBans();
 }
 
-export async function removeBan(user: string) {
-    delete banList[user];
+export async function removeBan(unbannedUser: string) {
+    for (const bannedUser in banList) {
+        if (bannedUser === unbannedUser) {
+            delete banList[bannedUser];
+            break;
+        }
+
+        const altAccounts = banList[unbannedUser];
+        banList[unbannedUser] = altAccounts.filter((u) => u !== unbannedUser);
+    }
+
     await writeBans();
 }
