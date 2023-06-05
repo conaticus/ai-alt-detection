@@ -60,8 +60,8 @@ export async function removeBan(unbannedUser: string) {
             break;
         }
 
-        const altAccounts = banList[unbannedUser];
-        banList[unbannedUser] = altAccounts.filter((u) => u !== unbannedUser);
+        const altAccounts = banList[bannedUser];
+        banList[bannedUser] = altAccounts.filter((u) => u !== unbannedUser);
     }
 
     await writeBans();
