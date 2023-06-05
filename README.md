@@ -43,3 +43,9 @@ In order to specify alts, you can group them to a singular account like so:
 ```
 
 Ensure that you also remove them from the ban list to prevent any unexpected behaviour.
+
+## Limitations
+
+-   Does not use account age as a factor
+-   Can only train on one channel
+-   Using the basic [NLP.js](https://github.com/axa-group/nlp.js/) library (inaccuracies)
