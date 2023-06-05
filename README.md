@@ -22,14 +22,14 @@ This bot will likely produce a lot of false positives so please use with caution
 
 If you have multiple users in your ban list that are alt accounts, I recommend that you specfiy this in the `bans.json`. If you do not see one of these, you need to first run `npm run dev` and stop the program so that it generates one.
 
-Here is an example of how to define alt accounts. In this file is a list of banned users. `Alt#0001`, `Alt#0002` and `Alt#0003` are all alt accounts linking to the same user, and `User#0001` is an individual account. The generated JSON will look like this:
+Here is an example of how to define alt accounts. In this file is a list of banned users. `Alt#0001` and `Alt#0002` are both alt accounts belonging to `User#0001`, and `User#0002` is an individual account. The generated JSON will look like this:
 
 ```json
 {
     "Alt#0001": [],
     "Alt#0002": [],
-    "Alt#0003": [],
-    "User#0001": []
+    "User#0001": [],
+    "User#0002": []
 }
 ```
 
@@ -37,8 +37,8 @@ In order to specify alts, you can group them to a singular account like so:
 
 ```json
 {
-    "Alt#0001": ["Alt#0002", "Alt#0003"],
-    "User#0001": []
+    "User#0001": ["Alt#0001", "Alt#0002"],
+    "User#0002": []
 }
 ```
 
