@@ -46,7 +46,18 @@ export function constructLocalMessage(message: Message): LocalMessage {
 export async function saveDiscordMessages(
     client: Client
 ): Promise<LocalMessage[]> {
-    const messages = await getChannelMessages(client, config.chatId);
+    const messages = new Collection<string, Message>();
+    let arr = client.guilds.cache.get(config.guildId)?.channels.cache.map(c => c);
+    console.log(arr)
+    for (const c of arr ? arr : []) {
+        let id = c.id
+        if (c.type == ChannelType.GuildText) {
+            const r = await getChannelMessages(client, id)
+            messages.concat(r)
+            console.log("done " + id)
+        }
+    }
+
     const localMessages: LocalMessage[] = [];
 
     messages.forEach((m) => {
@@ -83,9 +94,15 @@ export async function getChannelMessages(
     client: Client,
     channelId: string
 ): Promise<Collection<string, Message>> {
+    console.log(channelId)
     const channel = client.channels.cache.get(channelId);
-    if (!channel || channel.type !== ChannelType.GuildText) {
+
+    if (!channel) {
         throw new Error("Failed to find specified channel.");
+    }
+    if (channel.type !== ChannelType.GuildText) {
+        let a = new Collection<string, Message>()
+        return a
     }
 
     if (!channel.isTextBased()) {
